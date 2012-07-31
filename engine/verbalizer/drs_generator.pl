@@ -64,14 +64,12 @@ transform_facts([group(Group)|RestFacts], Cond) :-
 	append(Group2, RestFacts, NewFacts),
 	transform_facts(NewFacts, Cond).
 
-transform_facts([can(ModFacts)|RestFacts], [<>drs([],ModConds)|RestCond]) :-
+transform_facts([Fact|RestFacts], [Cond|RestCond]) :-
+	Fact =.. [Mod, ModFacts],
+	is_modal_operator(Mod),
 	!,
 	transform_facts(ModFacts, ModConds),
-	transform_facts(RestFacts, RestCond).
-
-transform_facts([must(ModFacts)|RestFacts], [[]drs([],ModConds)|RestCond]) :-
-	!,
-	transform_facts(ModFacts, ModConds),
+	Cond =.. [Mod, drs([],ModConds)],
 	transform_facts(RestFacts, RestCond).
 
 transform_facts([Fact|RestFacts], [Fact-1|RestCond]) :-

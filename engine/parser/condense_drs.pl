@@ -99,12 +99,11 @@ transform_deep([Imp1|RestIn], [Imp2|RestOut]) :-
 	transform(CondTemp2, VarList2, CondOut2),
 	transform_deep(RestIn, RestOut).
 
-transform_deep([<>drs(VarList, CondIn)|RestIn], [<>drs([], CondOut)|RestOut]) :-
+transform_deep([FirstIn|RestIn], [FirstOut|RestOut]) :-
+	FirstIn =.. [Mod, drs(VarList, CondIn)],
+	is_modal_operator(Mod),
 	transform(CondIn, VarList, CondOut),
-	transform_deep(RestIn, RestOut).
-
-transform_deep([[]drs(VarList, CondIn)|RestIn], [[]drs([], CondOut)|RestOut]) :-
-	transform(CondIn, VarList, CondOut),
+	FirstOut =.. [Mod, drs([], CondOut)],
 	transform_deep(RestIn, RestOut).
 
 
@@ -255,23 +254,17 @@ unify_objects(_, _, _) :-
 
 %% transform_modality(+CondIn, -CondOut)
 %
-% The modality boxes for possibility (<>) and necessity ([]) are replaced by the ordinary
-% predicates can/1 and must/1, containing a list of conditions.
+% Transforms the modality boxes (can, must, should and may).
 
 transform_modality(CondIn, CondOut) :-
-	member(<>drs(V,C), CondIn),
+	member(In, CondIn),
+	In =.. [Mod, drs(_,C)],
+	is_modal_operator(Mod),
 	!,
-	remove_exact(CondIn, <>drs(V,C), CondTemp1),
+	remove_exact(CondIn, In, CondTemp1),
 	remove_sentence_nr(C, CN),
-	CondTemp2 = [can(CN)-1|CondTemp1],
-	transform_modality(CondTemp2, CondOut).
-
-transform_modality(CondIn, CondOut) :-
-	member([]drs(V,C), CondIn),
-	!,
-	remove_exact(CondIn, []drs(V,C), CondTemp1),
-	remove_sentence_nr(C, CN),
-	CondTemp2 = [must(CN)-1|CondTemp1],
+	Out =.. [Mod, CN],
+	CondTemp2 = [Out-1|CondTemp1],
 	transform_modality(CondTemp2, CondOut).
 
 transform_modality(Cond, Cond).

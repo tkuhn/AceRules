@@ -49,12 +49,10 @@ expand_neg_mod([-drs(_, CondIn)|RestIn], [-drs([], CondOut)|RestOut]) :-
 	expand_neg_mod(CondTemp, CondOut),  % there can be nested modality boxes
 	expand_neg_mod(RestIn, RestOut).
 
-expand_neg_mod([<>drs(_, CondIn)|RestIn], [<>drs([], CondOut)|RestOut]) :-
+expand_neg_mod([In|RestIn], [Out|RestOut]) :-
+    In =.. [Mod, drs(_, CondIn)],
 	expand(CondIn, CondOut),
-	expand_neg_mod(RestIn, RestOut).
-
-expand_neg_mod([[]drs(_, CondIn)|RestIn], [[]drs([], CondOut)|RestOut]) :-
-	expand(CondIn, CondOut),
+	Out =.. [Mod, drs([], CondOut)],
 	expand_neg_mod(RestIn, RestOut).
 
 

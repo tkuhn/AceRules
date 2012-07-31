@@ -320,19 +320,16 @@ valid_fact_mod(proper_part_of(_,_)-_) :-
 
 valid_fact_mod(_-_).
 
-valid_fact_mod(<>drs(_, Conditions)) :-
+valid_fact_mod(Term) :-
+    Term =.. [Mod, drs(_, Conditions)],
+    is_modal_operator(Mod),
     flat(Conditions),
     !.
 
-valid_fact_mod(<>drs(_, _)) :-
-	throw(ar_error('parser.drs-check-1.InvalidModality', 'Modality (can/must) cannot be applied on complex structures.')).
-
-valid_fact_mod([]drs(_, Conditions)) :-
-    flat(Conditions),
-    !.
-
-valid_fact_mod([]drs(_, _)) :-
-	throw(ar_error('parser.drs-check-1.InvalidModality', 'Modality (can/must) cannot be applied on complex structures.')).
+valid_fact_mod(Term) :-
+    Term =.. [Mod, drs(_, _)],
+    is_modal_operator(Mod),
+	throw(ar_error('parser.drs-check-1.InvalidModality', 'Modality (can/must/should/may) cannot be applied to complex structures.')).
 
 
 %% contains_no_vars(+Term)

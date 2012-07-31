@@ -93,16 +93,13 @@ attach_neg_vars([-drs(_, CondIn)|RestIn], [-drs(Vars, CondOut)|RestOut]) :-
 	attach_neg_vars(CondIn, CondOut),  % there can be nested modality boxes
 	attach_neg_vars(RestIn, RestOut).
 
-attach_neg_vars([<>drs(_, Cond)|RestIn], [<>drs(Vars, Cond)|RestOut]) :-
+attach_neg_vars([FirstIn|RestIn], [FirstOut|RestOut]) :-
+	FirstIn =.. [Mod, drs(_, Cond)],
+	is_modal_operator(Mod),
 	retractall(neg_var(_)),
 	collect_neg_vars(Cond),
 	findall(V, neg_var(V), Vars),
-	attach_neg_vars(RestIn, RestOut).
-
-attach_neg_vars([[]drs(_, Cond)|RestIn], [[]drs(Vars, Cond)|RestOut]) :-
-	retractall(neg_var(_)),
-	collect_neg_vars(Cond),
-	findall(V, neg_var(V), Vars),
+	FirstOut =.. [Mod, drs(Vars, Cond)],
 	attach_neg_vars(RestIn, RestOut).
 
 
