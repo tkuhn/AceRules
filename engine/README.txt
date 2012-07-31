@@ -2,10 +2,6 @@
  
 Tobias Kuhn, 2008-11-24.
 
-AceRules is available under the LGPL license. See LICENSE.txt for details.
-
-Copyright 2008-2012, Tobias Kuhn, http://www.tkuhn.ch
-
 
 ---++ Requirements
 
