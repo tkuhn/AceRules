@@ -264,7 +264,7 @@ transform_modality(CondIn, CondOut) :-
 	remove_exact(CondIn, In, CondTemp1),
 	remove_sentence_nr(C, CN),
 	Out =.. [Mod, CN],
-	CondTemp2 = [Out-1|CondTemp1],
+	CondTemp2 = [Out-0/0|CondTemp1],
 	transform_modality(CondTemp2, CondOut).
 
 transform_modality(Cond, Cond).

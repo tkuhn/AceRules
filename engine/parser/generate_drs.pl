@@ -17,14 +17,10 @@
 		generate_drs/3   % +ACEText, +Guess, -DRS
 	]).
 
-:- style_check(-singleton).
-:- style_check(-discontiguous).
 :- use_module(ape('lexicon/clex')).
 :- use_module(ape('parser/ace_to_drs')).
 :- use_module(ape('parser/tokenizer.pl')).
 :- ensure_loaded('../ulex_handler').
-:- style_check(+singleton).
-:- style_check(+discontiguous).
 :- use_module('../logger').
 :- use_module('../list_utils').
 
@@ -45,7 +41,7 @@ Furthermore, this module maps the error messages of APE to the format that is us
 % guessing should be applied.
 
 generate_drs(Text, Guess, DRS) :-
-	ace_to_drs_time(Text, [guess:Guess], _, _, DRS, Messages, _),
+	acetext_to_drs(Text, Guess, _, _, _, DRS, Messages, _),
 	!,
 	( member(message(error, _, _, _, _), Messages) ->
 		transform_ape_error_messages(Messages, MessagesAtom, Code),

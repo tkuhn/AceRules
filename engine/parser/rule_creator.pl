@@ -43,26 +43,26 @@ create_rules(drs(_, Conds), LabelMap, Rules) :-
 
 create([], _, []).
 
-create([Cond-N|RestConds], LabelMap, [(Label, Cond, [])|RestRules]) :-
+create([Cond-N/_|RestConds], LabelMap, [(Label, Cond, [])|RestRules]) :-
 	!,
 	member(N-Label, LabelMap),
 	create(RestConds, LabelMap, RestRules).
 
 create([NegCond|RestConds], LabelMap, [(Label, - Cond, [])|RestRules]) :-
-	NegCond = (-drs(_, [Cond-N])),
+	NegCond = (-drs(_, [Cond-N/_])),
 	!,
 	member(N-Label, LabelMap),
 	create(RestConds, LabelMap, RestRules).
 
 create([Cond|RestConds], LabelMap, [(Label, Then, IfConditionsT)|RestRules]) :-
-	Cond = (drs(_, IfConditions) => drs(_, [Then-N])),
+	Cond = (drs(_, IfConditions) => drs(_, [Then-N/_])),
 	!,
 	member(N-Label, LabelMap),
 	transform_cond(IfConditions, IfConditionsT),
 	create(RestConds, LabelMap, RestRules).
 
 create([Cond|RestConds], LabelMap, [(Label, - Then, IfConditionsT)|RestRules]) :-
-	Cond = (drs(_, IfConditions) => drs([], [-drs(_, [Then-N])])),
+	Cond = (drs(_, IfConditions) => drs([], [-drs(_, [Then-N/_])])),
 	!,
 	member(N-Label, LabelMap),
 	transform_cond(IfConditions, IfConditionsT),
