@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="AceRules" default="createwar" basedir=".">
+	
+	<target name="createwar" description="Create WAR file">
+		<jar
+			destfile="acerules.war"
+			basedir="war/"
+			includes="**"
+		/>
+	</target>
+
+</project>

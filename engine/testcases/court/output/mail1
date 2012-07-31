@@ -1,0 +1,96 @@
+
+INPUT TEXT:
+Junk-Rule: If a message is from a retailer then the message is not important.
+Delivery-Rule: If a message is from someone from who Karen awaits a delivery then the message is important.
+Delivery-Rule overrides Junk-Rule.
+Karen awaits a delivery from ParisCo.
+FaveCo is a retailer.
+BabyCo is a retailer.
+ParisCo is a retailer.
+FaveCo-Rule: If a message is from FaveCo then the message is important.
+FaveCo-Rule overrides Junk-Rule.
+Message110 is a message and is from ParisCo.
+Message116 is a message and is from FaveCo.
+Message211 is a message and is from BabyCo.
+
+RULES:
+pred_mod(be, v('Message110'), [modifier_pp(from, v('ParisCo'))]).
+pred_mod(be, v('Message116'), [modifier_pp(from, v('FaveCo'))]).
+pred_mod(be, v('Message211'), [modifier_pp(from, v('BabyCo'))]).
+pred_mod(await, v('Karen'), v(0), [modifier_pp(from, v('ParisCo'))]).
+object(v(0), delivery, countable, na, eq, 1).
+object(v('BabyCo'), 'BabyCo', named, na, eq, 1).
+object(v('BabyCo'), retailer, countable, na, eq, 1).
+object(v('FaveCo'), 'FaveCo', named, na, eq, 1).
+object(v('FaveCo'), retailer, countable, na, eq, 1).
+object(v('Message110'), 'Message110', named, na, eq, 1).
+object(v('Message110'), message, countable, na, eq, 1).
+object(v('Message116'), 'Message116', named, na, eq, 1).
+object(v('Message116'), message, countable, na, eq, 1).
+object(v('Message211'), 'Message211', named, na, eq, 1).
+object(v('Message211'), message, countable, na, eq, 1).
+object(v('ParisCo'), 'ParisCo', named, na, eq, 1).
+object(v('ParisCo'), retailer, countable, na, eq, 1).
+'Delivery-Rule':: group([property(A, important, pos)]) <- [pred_mod(await, v('Karen'), B, [modifier_pp(from, C)]), pred_mod(be, A, [modifier_pp(from, C)]), object(C, D, E, F, G, H), object(A, message, countable, na, eq, 1), object(B, delivery, countable, na, eq, 1)].
+'Delivery-Rule':: object(v('Karen'), 'Karen', named, na, eq, 1).
+'FaveCo-Rule':: group([property(A, important, pos)]) <- [pred_mod(be, A, [modifier_pp(from, v('FaveCo'))]), object(A, message, countable, na, eq, 1)].
+'Junk-Rule':: -group([property(A, important, pos)]) <- [pred_mod(be, A, [modifier_pp(from, B)]), object(A, message, countable, na, eq, 1), object(B, retailer, countable, na, eq, 1)].
+overrides('Delivery-Rule', 'Junk-Rule').
+overrides('FaveCo-Rule', 'Junk-Rule').
+
+SIMPLE RULES:
+be('Message110', [from('ParisCo')]).
+be('Message116', [from('FaveCo')]).
+be('Message211', [from('BabyCo')]).
+await('Karen', v(0), [from('ParisCo')]).
+delivery(v(0)).
+retailer('BabyCo').
+retailer('FaveCo').
+message('Message110').
+message('Message116').
+message('Message211').
+retailer('ParisCo').
+'Delivery-Rule':: important(A) <- [await('Karen', B, [from(C)]), be(A, [from(C)]), something(C), message(A), delivery(B)].
+'FaveCo-Rule':: important(A) <- [be(A, [from('FaveCo')]), message(A)].
+'Junk-Rule':: -important(A) <- [be(A, [from(B)]), message(A), retailer(B)].
+overrides('Delivery-Rule', 'Junk-Rule').
+overrides('FaveCo-Rule', 'Junk-Rule').
+
+ANSWERSET #1:
+-group([property(v('Message211'), important, pos)]).
+group([property(v('Message110'), important, pos)]).
+group([property(v('Message116'), important, pos)]).
+pred_mod(be, v('Message110'), [modifier_pp(from, v('ParisCo'))]).
+pred_mod(be, v('Message116'), [modifier_pp(from, v('FaveCo'))]).
+pred_mod(be, v('Message211'), [modifier_pp(from, v('BabyCo'))]).
+pred_mod(await, v('Karen'), v(0), [modifier_pp(from, v('ParisCo'))]).
+object(v(0), delivery, countable, na, eq, 1).
+object(v('BabyCo'), 'BabyCo', named, na, eq, 1).
+object(v('BabyCo'), retailer, countable, na, eq, 1).
+object(v('FaveCo'), 'FaveCo', named, na, eq, 1).
+object(v('FaveCo'), retailer, countable, na, eq, 1).
+object(v('Karen'), 'Karen', named, na, eq, 1).
+object(v('Message110'), 'Message110', named, na, eq, 1).
+object(v('Message110'), message, countable, na, eq, 1).
+object(v('Message116'), 'Message116', named, na, eq, 1).
+object(v('Message116'), message, countable, na, eq, 1).
+object(v('Message211'), 'Message211', named, na, eq, 1).
+object(v('Message211'), message, countable, na, eq, 1).
+object(v('ParisCo'), 'ParisCo', named, na, eq, 1).
+object(v('ParisCo'), retailer, countable, na, eq, 1).
+
+ANSWERTEXT #1:
+Message116 is from FaveCo.
+Message116 is important.
+Message110 is from ParisCo.
+Message110 is important.
+Message211 is from BabyCo.
+Message116 is a message.
+ParisCo is a retailer.
+Message110 is a message.
+Message211 is a message.
+FaveCo is a retailer.
+BabyCo is a retailer.
+Karen awaits a delivery from ParisCo.
+It is false that Message211 is important.
+

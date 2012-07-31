@@ -1,0 +1,31 @@
+
+INPUT TEXT:
+John has a gun.
+John does not have a gun.
+Every dog hates Bill.
+Mary waits.
+
+RULES:
+-group([pred_mod(have, v('John'), gv(0), []), object(gv(0), gun, countable, na, eq, 1)]).
+group([pred_mod(hate, A, v('Bill'), [])]) <- [object(A, dog, countable, na, eq, 1)].
+group([pred_mod(have, v('John'), gv(0), []), object(gv(0), gun, countable, na, eq, 1)]).
+pred_mod(wait, v('Mary'), []).
+object(v('Bill'), 'Bill', named, na, eq, 1).
+object(v('John'), 'John', named, na, eq, 1).
+object(v('Mary'), 'Mary', named, na, eq, 1).
+
+SIMPLE RULES:
+-group([have('John', gv(0), []), gun(gv(0))]).
+hate(A, 'Bill', []) <- [dog(A)].
+group([have('John', gv(0), []), gun(gv(0))]).
+wait('Mary', []).
+
+ANSWERSET #1:
+pred_mod(wait, v('Mary'), []).
+object(v('Bill'), 'Bill', named, na, eq, 1).
+object(v('John'), 'John', named, na, eq, 1).
+object(v('Mary'), 'Mary', named, na, eq, 1).
+
+ANSWERTEXT #1:
+Mary waits.
+

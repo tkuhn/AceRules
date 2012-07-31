@@ -1,0 +1,36 @@
+
+INPUT TEXT:
+R1 overrides R2.
+R2 overrides R3.
+R1: John sleeps.
+R2: Bill waits.
+R3: John does not sleep.
+
+RULES:
+'R1':: group([pred_mod(sleep, v('John'), [])]).
+'R1':: object(v('John'), 'John', named, na, eq, 1).
+'R2':: pred_mod(wait, v('Bill'), []).
+'R2':: object(v('Bill'), 'Bill', named, na, eq, 1).
+'R3':: -group([pred_mod(sleep, v('John'), [])]).
+overrides('R1', 'R2').
+overrides('R2', 'R3').
+overrides('R1', 'R3').
+
+SIMPLE RULES:
+'R1':: sleep('John', []).
+'R2':: wait('Bill', []).
+'R3':: -sleep('John', []).
+overrides('R1', 'R2').
+overrides('R2', 'R3').
+overrides('R1', 'R3').
+
+ANSWERSET #1:
+group([pred_mod(sleep, v('John'), [])]).
+pred_mod(wait, v('Bill'), []).
+object(v('Bill'), 'Bill', named, na, eq, 1).
+object(v('John'), 'John', named, na, eq, 1).
+
+ANSWERTEXT #1:
+Bill waits.
+John sleeps.
+

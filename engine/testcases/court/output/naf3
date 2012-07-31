@@ -1,0 +1,55 @@
+
+INPUT TEXT:
+If there is someone X and it is not provable that X is a n:criminal_x then X is not a criminal.
+Every n:criminal_x is a criminal.
+Mary is a n:criminal_x.
+Mary is a catholic.
+Every catholic is religious.
+Nobody who is religious is a n:criminal_x.
+John waits.
+Bill is a n:criminal_x.
+
+RULES:
+-group([object(A, criminal, countable, na, eq, 1)]) <- [object(A, B, C, D, E, F), ~group([object(A, criminal_x, countable, na, eq, 1)])].
+-group([object(A, criminal_x, countable, na, eq, 1)]) <- [group([property(A, religious, pos)]), object(A, B, C, D, E, F)].
+group([property(A, religious, pos)]) <- [object(A, catholic, countable, na, eq, 1)].
+group([object(A, criminal, countable, na, eq, 1)]) <- [group([object(A, criminal_x, countable, na, eq, 1)])].
+group([object(v('Bill'), criminal_x, countable, na, eq, 1)]).
+group([object(v('Mary'), criminal_x, countable, na, eq, 1)]).
+pred_mod(wait, v('John'), []).
+object(v('Bill'), 'Bill', named, na, eq, 1).
+object(v('John'), 'John', named, na, eq, 1).
+object(v('Mary'), 'Mary', named, na, eq, 1).
+object(v('Mary'), catholic, countable, na, eq, 1).
+
+SIMPLE RULES:
+-criminal(A) <- [something(A), ~criminal_x(A)].
+-criminal_x(A) <- [religious(A), something(A)].
+religious(A) <- [catholic(A)].
+criminal(A) <- [criminal_x(A)].
+criminal_x('Bill').
+criminal_x('Mary').
+wait('John', []).
+catholic('Mary').
+
+ANSWERSET #1:
+-group([object(v('John'), criminal, countable, na, eq, 1)]).
+-group([object(v('Mary'), criminal, countable, na, eq, 1)]).
+group([property(v('Mary'), religious, pos)]).
+group([object(v('Bill'), criminal, countable, na, eq, 1)]).
+group([object(v('Bill'), criminal_x, countable, na, eq, 1)]).
+pred_mod(wait, v('John'), []).
+object(v('Bill'), 'Bill', named, na, eq, 1).
+object(v('John'), 'John', named, na, eq, 1).
+object(v('Mary'), 'Mary', named, na, eq, 1).
+object(v('Mary'), catholic, countable, na, eq, 1).
+
+ANSWERTEXT #1:
+Mary is religious.
+Mary is a catholic.
+John waits.
+Bill is a n:criminal_x .
+Bill is a criminal.
+It is false that John is a criminal.
+It is false that Mary is a criminal.
+
