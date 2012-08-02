@@ -9,34 +9,28 @@ Every thief is a criminal.
 RULES:
 group([property(A, trustworthy, pos)]) <- [object(A, B, C, D, E, F), -group([object(A, criminal, countable, na, eq, 1)])].
 group([object(A, criminal, countable, na, eq, 1)]) <- [object(A, thief, countable, na, eq, 1)].
-group([object(v('Mary'), criminal, countable, na, eq, 1)]).
-object(v('Bill'), 'Bill', named, na, eq, 1).
-object(v('Bill'), thief, countable, na, eq, 1).
-object(v('John'), 'John', named, na, eq, 1).
-object(v('John'), customer, countable, na, eq, 1).
-object(v('Mary'), 'Mary', named, na, eq, 1).
+group([object(named('Mary'), criminal, countable, na, eq, 1)]).
+object(named('Bill'), thief, countable, na, eq, 1).
+object(named('John'), customer, countable, na, eq, 1).
 
 SIMPLE RULES:
 trustworthy(A) <- [something(A), -criminal(A)].
 criminal(A) <- [thief(A)].
-criminal('Mary').
-thief('Bill').
-customer('John').
+criminal(named('Mary')).
+thief(named('Bill')).
+customer(named('John')).
 
 ANSWERSET #1:
-object(v('Bill'), 'Bill', named, na, eq, 1).
-object(v('Bill'), thief, countable, na, eq, 1).
-object(v('John'), 'John', named, na, eq, 1).
-object(v('John'), customer, countable, na, eq, 1).
-object(v('Mary'), 'Mary', named, na, eq, 1).
-group([object(v('Bill'), criminal, countable, na, eq, 1)]).
-group([property(v('John'), trustworthy, pos)]).
-group([object(v('Mary'), criminal, countable, na, eq, 1)]).
+object(named('Bill'), thief, countable, na, eq, 1).
+object(named('John'), customer, countable, na, eq, 1).
+group([object(named('Bill'), criminal, countable, na, eq, 1)]).
+group([property(named('John'), trustworthy, pos)]).
+group([object(named('Mary'), criminal, countable, na, eq, 1)]).
 
 ANSWERTEXT #1:
 John is trustworthy.
 Mary is a criminal.
-John is a customer.
 Bill is a criminal.
+John is a customer.
 Bill is a thief.
 

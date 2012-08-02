@@ -17,8 +17,7 @@ group([object(A, clerk, countable, na, eq, 1)]) <- [object(A, B, C, D, E, F), ~g
 group([object(A, customer, countable, na, eq, 1)]) <- [object(A, B, C, D, E, F), ~group([object(A, clerk, countable, na, eq, 1)])].
 group([object(A, manager, countable, na, eq, 1)]) <- [object(A, B, C, D, E, F), ~group([object(A, worker, countable, na, eq, 1)])].
 group([object(A, worker, countable, na, eq, 1)]) <- [object(A, B, C, D, E, F), ~group([object(A, manager, countable, na, eq, 1)])].
-object(v('John'), 'John', named, na, eq, 1).
-object(v('John'), man, countable, na, eq, 1).
+object(named('John'), man, countable, na, eq, 1).
 
 SIMPLE RULES:
 -important(A) <- [something(A), ~clerk(A)].
@@ -28,33 +27,30 @@ clerk(A) <- [something(A), ~customer(A)].
 customer(A) <- [something(A), ~clerk(A)].
 manager(A) <- [something(A), ~worker(A)].
 worker(A) <- [something(A), ~manager(A)].
-man('John').
+man(named('John')).
 
 ANSWERSET #1:
-object(v('John'), 'John', named, na, eq, 1).
-object(v('John'), man, countable, na, eq, 1).
-group([property(v('John'), important, pos)]).
-group([object(v('John'), clerk, countable, na, eq, 1)]).
-group([object(v('John'), manager, countable, na, eq, 1)]).
+object(named('John'), man, countable, na, eq, 1).
+group([object(named('John'), worker, countable, na, eq, 1)]).
+group([object(named('John'), customer, countable, na, eq, 1)]).
+-group([property(named('John'), important, pos)]).
 
 ANSWERSET #2:
-object(v('John'), 'John', named, na, eq, 1).
-object(v('John'), man, countable, na, eq, 1).
-group([object(v('John'), worker, countable, na, eq, 1)]).
-group([object(v('John'), clerk, countable, na, eq, 1)]).
+object(named('John'), man, countable, na, eq, 1).
+group([object(named('John'), worker, countable, na, eq, 1)]).
+group([object(named('John'), clerk, countable, na, eq, 1)]).
 
 ANSWERSET #3:
-object(v('John'), 'John', named, na, eq, 1).
-object(v('John'), man, countable, na, eq, 1).
-group([object(v('John'), worker, countable, na, eq, 1)]).
-group([object(v('John'), customer, countable, na, eq, 1)]).
--group([property(v('John'), important, pos)]).
+object(named('John'), man, countable, na, eq, 1).
+group([property(named('John'), important, pos)]).
+group([object(named('John'), clerk, countable, na, eq, 1)]).
+group([object(named('John'), manager, countable, na, eq, 1)]).
 
 ANSWERTEXT #1:
-John is important.
-John is a manager.
-John is a clerk.
+John is a customer.
+John is a worker.
 John is a man.
+It is false that John is important.
 
 ANSWERTEXT #2:
 John is a clerk.
@@ -62,8 +58,8 @@ John is a worker.
 John is a man.
 
 ANSWERTEXT #3:
-John is a customer.
-John is a worker.
+John is important.
+John is a manager.
+John is a clerk.
 John is a man.
-It is false that John is important.
 

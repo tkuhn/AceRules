@@ -140,6 +140,7 @@ transform_objects(CondIn, CondOut) :-
 	transform_objects(CondTemp2, CondOut).
 
 transform_objects(CondIn, CondOut) :-
+    % (this transformation is no longer needed with the latest APE version)
 	member(object(A,Name,named,_,_,_)-_, CondIn),
 	var(A),
 	\+ var(Name),

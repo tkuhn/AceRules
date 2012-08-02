@@ -16,9 +16,8 @@ group([object(A, buyer, countable, na, eq, 1)]) <- [group([object(A, customer, c
 group([object(A, employee, countable, na, eq, 1)]) <- [object(A, manager, countable, na, eq, 1)].
 group([object(A, worker, countable, na, eq, 1)]) <- [group([object(A, employee, countable, na, eq, 1)])].
 group([object(A, 'wage-earner', countable, na, eq, 1)]) <- [group([object(A, worker, countable, na, eq, 1)])].
-group([object(v('John'), customer, countable, na, eq, 1)]).
-object(v('John'), 'John', named, na, eq, 1).
-object(v('John'), manager, countable, na, eq, 1).
+group([object(named('John'), customer, countable, na, eq, 1)]).
+object(named('John'), manager, countable, na, eq, 1).
 
 SIMPLE RULES:
 -customer(A) <- ['wage-earner'(A)].
@@ -27,15 +26,14 @@ buyer(A) <- [customer(A)].
 employee(A) <- [manager(A)].
 worker(A) <- [employee(A)].
 'wage-earner'(A) <- [worker(A)].
-customer('John').
-manager('John').
+customer(named('John')).
+manager(named('John')).
 
 ANSWERSET #1:
-group([object(v('John'), employee, countable, na, eq, 1)]).
-group([object(v('John'), 'wage-earner', countable, na, eq, 1)]).
-group([object(v('John'), worker, countable, na, eq, 1)]).
-object(v('John'), 'John', named, na, eq, 1).
-object(v('John'), manager, countable, na, eq, 1).
+group([object(named('John'), employee, countable, na, eq, 1)]).
+group([object(named('John'), 'wage-earner', countable, na, eq, 1)]).
+group([object(named('John'), worker, countable, na, eq, 1)]).
+object(named('John'), manager, countable, na, eq, 1).
 
 ANSWERTEXT #1:
 John is a manager.

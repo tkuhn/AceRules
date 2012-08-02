@@ -9,29 +9,27 @@ John is a shoplifter.
 John is not a teenager.
 
 RULES:
--group([object(v('John'), teenager, countable, na, eq, 1)]).
+-group([object(named('John'), teenager, countable, na, eq, 1)]).
 group([property(A, trustworthy, pos)]) <- [object(A, B, C, D, E, F), ~group([object(A, criminal, countable, na, eq, 1)])].
 group([object(A, customer, countable, na, eq, 1)]) <- [group([property(A, trustworthy, pos)]), object(A, B, C, D, E, F)].
 group([object(A, criminal, countable, na, eq, 1)]) <- [group([object(A, thief, countable, na, eq, 1)])].
 group([object(A, teenager, countable, na, eq, 1)]) <- [object(A, shoplifter, countable, na, eq, 1)].
 group([object(A, thief, countable, na, eq, 1)]) <- [object(A, shoplifter, countable, na, eq, 1)].
-object(v('John'), 'John', named, na, eq, 1).
-object(v('John'), shoplifter, countable, na, eq, 1).
+object(named('John'), shoplifter, countable, na, eq, 1).
 
 SIMPLE RULES:
--teenager('John').
+-teenager(named('John')).
 trustworthy(A) <- [something(A), ~criminal(A)].
 customer(A) <- [trustworthy(A), something(A)].
 criminal(A) <- [thief(A)].
 teenager(A) <- [shoplifter(A)].
 thief(A) <- [shoplifter(A)].
-shoplifter('John').
+shoplifter(named('John')).
 
 ANSWERSET #1:
-group([object(v('John'), criminal, countable, na, eq, 1)]).
-group([object(v('John'), thief, countable, na, eq, 1)]).
-object(v('John'), 'John', named, na, eq, 1).
-object(v('John'), shoplifter, countable, na, eq, 1).
+group([object(named('John'), criminal, countable, na, eq, 1)]).
+group([object(named('John'), thief, countable, na, eq, 1)]).
+object(named('John'), shoplifter, countable, na, eq, 1).
 
 ANSWERTEXT #1:
 John is a shoplifter.

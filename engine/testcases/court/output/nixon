@@ -7,25 +7,23 @@ Nixon is a republican.
 Republican-Rule overrides Quaker-Rule.
 
 RULES:
-object(v('Nixon'), 'Nixon', named, na, eq, 1).
-object(v('Nixon'), quaker, countable, na, eq, 1).
-object(v('Nixon'), republican, countable, na, eq, 1).
+object(named('Nixon'), quaker, countable, na, eq, 1).
+object(named('Nixon'), republican, countable, na, eq, 1).
 'Quaker-Rule':: group([object(A, pacifist, countable, na, eq, 1)]) <- [object(A, quaker, countable, na, eq, 1)].
 'Republican-Rule':: -group([object(A, pacifist, countable, na, eq, 1)]) <- [object(A, republican, countable, na, eq, 1)].
 overrides('Republican-Rule', 'Quaker-Rule').
 
 SIMPLE RULES:
-quaker('Nixon').
-republican('Nixon').
+quaker(named('Nixon')).
+republican(named('Nixon')).
 'Quaker-Rule':: pacifist(A) <- [quaker(A)].
 'Republican-Rule':: -pacifist(A) <- [republican(A)].
 overrides('Republican-Rule', 'Quaker-Rule').
 
 ANSWERSET #1:
--group([object(v('Nixon'), pacifist, countable, na, eq, 1)]).
-object(v('Nixon'), 'Nixon', named, na, eq, 1).
-object(v('Nixon'), quaker, countable, na, eq, 1).
-object(v('Nixon'), republican, countable, na, eq, 1).
+-group([object(named('Nixon'), pacifist, countable, na, eq, 1)]).
+object(named('Nixon'), quaker, countable, na, eq, 1).
+object(named('Nixon'), republican, countable, na, eq, 1).
 
 ANSWERTEXT #1:
 Nixon is a republican.

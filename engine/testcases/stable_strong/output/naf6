@@ -6,39 +6,33 @@ Message36 is a message.
 Message74 is a message that is important.
 
 RULES:
--group([property(v('Message13'), important, pos)]).
+-group([property(named('Message13'), important, pos)]).
 group([property(A, important, pos)]) <- [object(A, message, countable, na, eq, 1), ~ -group([property(A, important, pos)])].
-group([property(v('Message74'), important, pos)]).
-object(v('Message13'), 'Message13', named, na, eq, 1).
-object(v('Message13'), message, countable, na, eq, 1).
-object(v('Message36'), 'Message36', named, na, eq, 1).
-object(v('Message36'), message, countable, na, eq, 1).
-object(v('Message74'), 'Message74', named, na, eq, 1).
-object(v('Message74'), message, countable, na, eq, 1).
+group([property(named('Message74'), important, pos)]).
+object(named('Message13'), message, countable, na, eq, 1).
+object(named('Message36'), message, countable, na, eq, 1).
+object(named('Message74'), message, countable, na, eq, 1).
 
 SIMPLE RULES:
--important('Message13').
+-important(named('Message13')).
 important(A) <- [message(A), ~ -important(A)].
-important('Message74').
-message('Message13').
-message('Message36').
-message('Message74').
+important(named('Message74')).
+message(named('Message13')).
+message(named('Message36')).
+message(named('Message74')).
 
 ANSWERSET #1:
-object(v('Message13'), 'Message13', named, na, eq, 1).
-object(v('Message13'), message, countable, na, eq, 1).
-object(v('Message36'), 'Message36', named, na, eq, 1).
-object(v('Message36'), message, countable, na, eq, 1).
-object(v('Message74'), 'Message74', named, na, eq, 1).
-object(v('Message74'), message, countable, na, eq, 1).
-group([property(v('Message36'), important, pos)]).
-group([property(v('Message74'), important, pos)]).
--group([property(v('Message13'), important, pos)]).
+object(named('Message13'), message, countable, na, eq, 1).
+object(named('Message36'), message, countable, na, eq, 1).
+object(named('Message74'), message, countable, na, eq, 1).
+group([property(named('Message36'), important, pos)]).
+group([property(named('Message74'), important, pos)]).
+-group([property(named('Message13'), important, pos)]).
 
 ANSWERTEXT #1:
 Message74 is important.
-Message74 is a message.
 Message36 is important.
+Message74 is a message.
 Message36 is a message.
 Message13 is a message.
 It is false that Message13 is important.
