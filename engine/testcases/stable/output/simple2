@@ -11,7 +11,10 @@ group([property(A, important, pos)]) <- [group([object(A, customer, countable, n
 group([object(A, employee, countable, na, eq, 1)]) <- [object(A, B, C, D, E, F), -group([object(A, customer, countable, na, eq, 1)])].
 group([object(named('Bill'), customer, countable, na, eq, 1)]).
 group([object(named('Mary'), employee, countable, na, eq, 1)]).
+object(named('Bill'), 'Bill', named, na, eq, 1).
+object(named('John'), 'John', named, na, eq, 1).
 object(named('John'), man, countable, na, eq, 1).
+object(named('Mary'), 'Mary', named, na, eq, 1).
 
 SIMPLE RULES:
 important(A) <- [customer(A)].
@@ -21,7 +24,10 @@ employee(named('Mary')).
 man(named('John')).
 
 ANSWERSET #1:
+object(named('Bill'), 'Bill', named, na, eq, 1).
+object(named('John'), 'John', named, na, eq, 1).
 object(named('John'), man, countable, na, eq, 1).
+object(named('Mary'), 'Mary', named, na, eq, 1).
 group([property(named('Bill'), important, pos)]).
 group([object(named('Bill'), customer, countable, na, eq, 1)]).
 group([object(named('John'), employee, countable, na, eq, 1)]).

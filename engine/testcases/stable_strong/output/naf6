@@ -9,8 +9,11 @@ RULES:
 -group([property(named('Message13'), important, pos)]).
 group([property(A, important, pos)]) <- [object(A, message, countable, na, eq, 1), ~ -group([property(A, important, pos)])].
 group([property(named('Message74'), important, pos)]).
+object(named('Message13'), 'Message13', named, na, eq, 1).
 object(named('Message13'), message, countable, na, eq, 1).
+object(named('Message36'), 'Message36', named, na, eq, 1).
 object(named('Message36'), message, countable, na, eq, 1).
+object(named('Message74'), 'Message74', named, na, eq, 1).
 object(named('Message74'), message, countable, na, eq, 1).
 
 SIMPLE RULES:
@@ -22,8 +25,11 @@ message(named('Message36')).
 message(named('Message74')).
 
 ANSWERSET #1:
+object(named('Message13'), 'Message13', named, na, eq, 1).
 object(named('Message13'), message, countable, na, eq, 1).
+object(named('Message36'), 'Message36', named, na, eq, 1).
 object(named('Message36'), message, countable, na, eq, 1).
+object(named('Message74'), 'Message74', named, na, eq, 1).
 object(named('Message74'), message, countable, na, eq, 1).
 group([property(named('Message36'), important, pos)]).
 group([property(named('Message74'), important, pos)]).

@@ -6,25 +6,25 @@ Every customer is important.
 
 RULES:
 group([property(A, important, pos)]) <- [object(A, customer, countable, na, eq, 1)].
-object(v('Bill'), 'Bill', named, na, eq, 1).
-object(v('Bill'), customer, countable, na, eq, 1).
-object(v('John'), 'John', named, na, eq, 1).
-object(v('John'), man, countable, na, eq, 1).
+object(named('Bill'), 'Bill', named, na, eq, 1).
+object(named('Bill'), customer, countable, na, eq, 1).
+object(named('John'), 'John', named, na, eq, 1).
+object(named('John'), man, countable, na, eq, 1).
 
 SIMPLE RULES:
 important(A) <- [customer(A)].
-customer('Bill').
-man('John').
+customer(named('Bill')).
+man(named('John')).
 
 ANSWERSET #1:
-object(v('Bill'), 'Bill', named, na, eq, 1).
-object(v('Bill'), customer, countable, na, eq, 1).
-object(v('John'), 'John', named, na, eq, 1).
-object(v('John'), man, countable, na, eq, 1).
-group([property(v('Bill'), important, pos)]).
+object(named('Bill'), 'Bill', named, na, eq, 1).
+object(named('Bill'), customer, countable, na, eq, 1).
+object(named('John'), 'John', named, na, eq, 1).
+object(named('John'), man, countable, na, eq, 1).
+group([property(named('Bill'), important, pos)]).
 
 ANSWERTEXT #1:
 Bill is important.
-Bill is a customer.
 John is a man.
+Bill is a customer.
 

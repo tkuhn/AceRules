@@ -64,8 +64,9 @@ get_stable_models(SmRules, Mode, Models, MaxModels) :-
     ),
     close(S),
     memory_file_to_atom(MemHandle, Command),
-    open(pipe(Command), read, S),
-    get_models(S, Models),
+    open(pipe(Command), read, P),
+    get_models(P, Models),
+    close(P),
     ( Models == [] ->
     	throw(ar_error('stable-interpreter.get-stable-model.NoModel', 'Program has no answer.'))
     ;
