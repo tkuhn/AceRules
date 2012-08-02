@@ -7,27 +7,21 @@ Bill is a man.
 
 RULES:
 -group([object(A, customer, countable, na, eq, 1)]) <- [object(A, B, C, D, E, F), object(A, employee, countable, na, eq, 1)].
--group([object(v('John'), customer, countable, na, eq, 1)]).
-object(v('Bill'), 'Bill', named, na, eq, 1).
-object(v('Bill'), man, countable, na, eq, 1).
-object(v('John'), 'John', named, na, eq, 1).
-object(v('Mary'), 'Mary', named, na, eq, 1).
-object(v('Mary'), employee, countable, na, eq, 1).
+-group([object(named('John'), customer, countable, na, eq, 1)]).
+object(named('Bill'), man, countable, na, eq, 1).
+object(named('Mary'), employee, countable, na, eq, 1).
 
 SIMPLE RULES:
 -customer(A) <- [something(A), employee(A)].
--customer('John').
-man('Bill').
-employee('Mary').
+-customer(named('John')).
+man(named('Bill')).
+employee(named('Mary')).
 
 ANSWERSET #1:
-object(v('Bill'), 'Bill', named, na, eq, 1).
-object(v('Bill'), man, countable, na, eq, 1).
-object(v('John'), 'John', named, na, eq, 1).
-object(v('Mary'), 'Mary', named, na, eq, 1).
-object(v('Mary'), employee, countable, na, eq, 1).
--group([object(v('Mary'), customer, countable, na, eq, 1)]).
--group([object(v('John'), customer, countable, na, eq, 1)]).
+object(named('Bill'), man, countable, na, eq, 1).
+object(named('Mary'), employee, countable, na, eq, 1).
+-group([object(named('Mary'), customer, countable, na, eq, 1)]).
+-group([object(named('John'), customer, countable, na, eq, 1)]).
 
 ANSWERTEXT #1:
 Mary is an employee.

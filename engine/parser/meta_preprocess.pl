@@ -58,9 +58,16 @@ meta_preprocess(Codes, PlainText, LabelMap, Overrides) :-
 
 split([], []).
 
-split(Tokens, [Sentence|RestSentences]) :-
+split(Tokens, Sentences) :-
 	get_sentence(Tokens, [], Sentence, RestTokens),
-	split(RestTokens, RestSentences).
+	split(RestTokens, RestSentences),
+	add_sentence(Sentence, RestSentences, Sentences).
+
+
+add_sentence([], Sentences, Sentences) :-
+    !.
+
+add_sentence(Sentence, Sentences, [Sentence|Sentences]).
 
 
 %% get_sentence(+Tokens, +AccTokens, -Sentence, -RestTokens)
@@ -69,6 +76,9 @@ split(Tokens, [Sentence|RestSentences]) :-
 % occurence of a full stop '.'. This is stored in Sentence. AccTokens contains
 % the accumulated tokens that are already processed. RestTokens returns the rest
 % of the tokens that are beyond the first full stop.
+
+get_sentence(['<p>'|RestTokens], Sentence, Sentence, RestTokens) :-
+	!.
 
 get_sentence(['.'|RestTokens], AccSentence, Sentence, RestTokens) :-
 	!,
