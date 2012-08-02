@@ -17,8 +17,8 @@ group([pred_mod(have, A, gv(2), []), object(gv(2), fur, mass, na, na, na)]) <- [
 group([pred_mod(have, A, gv(0), []), object(gv(0), bill, countable, na, eq, 1)]) <- [object(A, platypus, countable, na, eq, 1)].
 group([pred_mod(lay, A, gv(1), []), object(gv(1), egg, countable, na, geq, 2)]) <- [object(A, platypus, countable, na, eq, 1)].
 group([object(A, monotreme, countable, na, eq, 1)]) <- [object(A, platypus, countable, na, eq, 1)].
-object(v('John'), 'John', named, na, eq, 1).
-object(v('John'), platypus, countable, na, eq, 1).
+object(named('John'), 'John', named, na, eq, 1).
+object(named('John'), platypus, countable, na, eq, 1).
 'R1':: group([object(A, mammal, countable, na, eq, 1)]) <- [group([object(A, monotreme, countable, na, eq, 1)])].
 'R2':: group([object(A, mammal, countable, na, eq, 1)]) <- [group([pred_mod(have, A, gv(2), []), object(gv(2), fur, mass, na, na, na)]), object(A, B, C, D, E, F)].
 'R3':: -group([object(A, mammal, countable, na, eq, 1)]) <- [group([pred_mod(lay, A, gv(1), []), object(gv(1), egg, countable, na, geq, 2)]), object(A, B, C, D, E, F)].
@@ -31,7 +31,7 @@ group([have(A, gv(2), []), fur(gv(2))]) <- [platypus(A)].
 group([have(A, gv(0), []), bill(gv(0))]) <- [platypus(A)].
 group([lay(A, gv(1), []), egg(gv(1))]) <- [platypus(A)].
 monotreme(A) <- [platypus(A)].
-platypus('John').
+platypus(named('John')).
 'R1':: mammal(A) <- [monotreme(A)].
 'R2':: mammal(A) <- [group([have(A, gv(2), []), fur(gv(2))]), something(A)].
 'R3':: -mammal(A) <- [group([lay(A, gv(1), []), egg(gv(1))]), something(A)].
@@ -40,13 +40,13 @@ overrides('R1', 'R3').
 overrides('R2', 'R4').
 
 ANSWERSET #1:
-group([pred_mod(have, v('John'), gv(0), []), object(gv(0), bill, countable, na, eq, 1)]).
-group([pred_mod(have, v('John'), gv(2), []), object(gv(2), fur, mass, na, na, na)]).
-group([pred_mod(lay, v('John'), gv(1), []), object(gv(1), egg, countable, na, geq, 2)]).
-group([object(v('John'), mammal, countable, na, eq, 1)]).
-group([object(v('John'), monotreme, countable, na, eq, 1)]).
-object(v('John'), 'John', named, na, eq, 1).
-object(v('John'), platypus, countable, na, eq, 1).
+group([pred_mod(have, named('John'), gv(0), []), object(gv(0), bill, countable, na, eq, 1)]).
+group([pred_mod(have, named('John'), gv(2), []), object(gv(2), fur, mass, na, na, na)]).
+group([pred_mod(lay, named('John'), gv(1), []), object(gv(1), egg, countable, na, geq, 2)]).
+group([object(named('John'), mammal, countable, na, eq, 1)]).
+group([object(named('John'), monotreme, countable, na, eq, 1)]).
+object(named('John'), 'John', named, na, eq, 1).
+object(named('John'), platypus, countable, na, eq, 1).
 
 ANSWERTEXT #1:
 John is a platypus.

@@ -90,7 +90,7 @@ group_shallow(PredListIn, PredListOut) :-
 group_shallow(PredList, PredList).
 
 
-group(ListIn, [group(Target)-N|ListOut]) :-
+group(ListIn, [group(Target)-N/0|ListOut]) :-
 	copy_term(ListIn, ListInSk),
 	transform_vars_1(ListInSk, ListInT),
 	group_template(Template),
@@ -99,7 +99,7 @@ group(ListIn, [group(Target)-N|ListOut]) :-
 
 match_template(List, _ListSk, [], List, [], _).
 
-match_template([E-N|ListIn], [S-N|ListInSk], Template, ListOut, [E|TargetRest], N) :-
+match_template([E-N/_|ListIn], [S-N/_|ListInSk], Template, ListOut, [E|TargetRest], N) :-
 	cut_template_element(Template, S, E, Template2),
 	match_template(ListIn, ListInSk, Template2, ListOut, TargetRest, N).
 

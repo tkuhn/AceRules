@@ -12,29 +12,29 @@ RULES:
 -group([pred_mod(have, A, gv(1), []), object(gv(1), cat, countable, na, eq, 1)]) <- [group([pred_mod(have, A, gv(3), []), object(gv(3), car, countable, na, eq, 1)]), object(A, man, countable, na, eq, 1), -group([pred_mod(have, A, gv(0), []), object(gv(0), dog, countable, na, eq, 1)])].
 group([pred_mod(have, A, gv(4), []), object(gv(4), bike, countable, na, eq, 1)]) <- [object(A, man, countable, na, eq, 1)].
 group([pred_mod(have, A, gv(3), []), object(gv(3), car, countable, na, eq, 1)]) <- [pred_mod(have, A, B, []), object(A, man, countable, na, eq, 1), object(B, house, countable, na, eq, 1)].
-pred_mod(have, v('John'), v(0), []).
+pred_mod(have, named('John'), v(0), []).
+object(named('John'), 'John', named, na, eq, 1).
+object(named('John'), man, countable, na, eq, 1).
 object(v(0), house, countable, na, eq, 1).
-object(v('John'), 'John', named, na, eq, 1).
-object(v('John'), man, countable, na, eq, 1).
 
 SIMPLE RULES:
 -group([have(A, gv(0), []), dog(gv(0))]) <- [group([have(A, gv(4), []), bike(gv(4))]), man(A)].
 -group([have(A, gv(1), []), cat(gv(1))]) <- [group([have(A, gv(3), []), car(gv(3))]), man(A), -group([have(A, gv(0), []), dog(gv(0))])].
 group([have(A, gv(4), []), bike(gv(4))]) <- [man(A)].
 group([have(A, gv(3), []), car(gv(3))]) <- [have(A, B, []), man(A), house(B)].
-have('John', v(0), []).
+have(named('John'), v(0), []).
+man(named('John')).
 house(v(0)).
-man('John').
 
 ANSWERSET #1:
--group([pred_mod(have, v('John'), gv(0), []), object(gv(0), dog, countable, na, eq, 1)]).
--group([pred_mod(have, v('John'), gv(1), []), object(gv(1), cat, countable, na, eq, 1)]).
-group([pred_mod(have, v('John'), gv(3), []), object(gv(3), car, countable, na, eq, 1)]).
-group([pred_mod(have, v('John'), gv(4), []), object(gv(4), bike, countable, na, eq, 1)]).
-pred_mod(have, v('John'), v(0), []).
+-group([pred_mod(have, named('John'), gv(0), []), object(gv(0), dog, countable, na, eq, 1)]).
+-group([pred_mod(have, named('John'), gv(1), []), object(gv(1), cat, countable, na, eq, 1)]).
+group([pred_mod(have, named('John'), gv(3), []), object(gv(3), car, countable, na, eq, 1)]).
+group([pred_mod(have, named('John'), gv(4), []), object(gv(4), bike, countable, na, eq, 1)]).
+pred_mod(have, named('John'), v(0), []).
+object(named('John'), 'John', named, na, eq, 1).
+object(named('John'), man, countable, na, eq, 1).
 object(v(0), house, countable, na, eq, 1).
-object(v('John'), 'John', named, na, eq, 1).
-object(v('John'), man, countable, na, eq, 1).
 
 ANSWERTEXT #1:
 John is a man.

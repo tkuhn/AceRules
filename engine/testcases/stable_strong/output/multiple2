@@ -17,6 +17,7 @@ group([object(A, clerk, countable, na, eq, 1)]) <- [object(A, B, C, D, E, F), ~g
 group([object(A, customer, countable, na, eq, 1)]) <- [object(A, B, C, D, E, F), ~group([object(A, clerk, countable, na, eq, 1)])].
 group([object(A, manager, countable, na, eq, 1)]) <- [object(A, B, C, D, E, F), ~group([object(A, worker, countable, na, eq, 1)])].
 group([object(A, worker, countable, na, eq, 1)]) <- [object(A, B, C, D, E, F), ~group([object(A, manager, countable, na, eq, 1)])].
+object(named('John'), 'John', named, na, eq, 1).
 object(named('John'), man, countable, na, eq, 1).
 
 SIMPLE RULES:
@@ -30,27 +31,30 @@ worker(A) <- [something(A), ~manager(A)].
 man(named('John')).
 
 ANSWERSET #1:
-object(named('John'), man, countable, na, eq, 1).
-group([object(named('John'), worker, countable, na, eq, 1)]).
-group([object(named('John'), customer, countable, na, eq, 1)]).
--group([property(named('John'), important, pos)]).
-
-ANSWERSET #2:
-object(named('John'), man, countable, na, eq, 1).
-group([object(named('John'), worker, countable, na, eq, 1)]).
-group([object(named('John'), clerk, countable, na, eq, 1)]).
-
-ANSWERSET #3:
+object(named('John'), 'John', named, na, eq, 1).
 object(named('John'), man, countable, na, eq, 1).
 group([property(named('John'), important, pos)]).
 group([object(named('John'), clerk, countable, na, eq, 1)]).
 group([object(named('John'), manager, countable, na, eq, 1)]).
 
+ANSWERSET #2:
+object(named('John'), 'John', named, na, eq, 1).
+object(named('John'), man, countable, na, eq, 1).
+group([object(named('John'), worker, countable, na, eq, 1)]).
+group([object(named('John'), clerk, countable, na, eq, 1)]).
+
+ANSWERSET #3:
+object(named('John'), 'John', named, na, eq, 1).
+object(named('John'), man, countable, na, eq, 1).
+group([object(named('John'), worker, countable, na, eq, 1)]).
+group([object(named('John'), customer, countable, na, eq, 1)]).
+-group([property(named('John'), important, pos)]).
+
 ANSWERTEXT #1:
-John is a customer.
-John is a worker.
+John is important.
+John is a manager.
+John is a clerk.
 John is a man.
-It is false that John is important.
 
 ANSWERTEXT #2:
 John is a clerk.
@@ -58,8 +62,8 @@ John is a worker.
 John is a man.
 
 ANSWERTEXT #3:
-John is important.
-John is a manager.
-John is a clerk.
+John is a customer.
+John is a worker.
 John is a man.
+It is false that John is important.
 
