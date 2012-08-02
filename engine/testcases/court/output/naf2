@@ -15,6 +15,7 @@ group([object(A, customer, countable, na, eq, 1)]) <- [group([property(A, trustw
 group([object(A, criminal, countable, na, eq, 1)]) <- [group([object(A, thief, countable, na, eq, 1)])].
 group([object(A, teenager, countable, na, eq, 1)]) <- [object(A, shoplifter, countable, na, eq, 1)].
 group([object(A, thief, countable, na, eq, 1)]) <- [object(A, shoplifter, countable, na, eq, 1)].
+object(named('John'), 'John', named, na, eq, 1).
 object(named('John'), shoplifter, countable, na, eq, 1).
 
 SIMPLE RULES:
@@ -29,6 +30,7 @@ shoplifter(named('John')).
 ANSWERSET #1:
 group([object(named('John'), criminal, countable, na, eq, 1)]).
 group([object(named('John'), thief, countable, na, eq, 1)]).
+object(named('John'), 'John', named, na, eq, 1).
 object(named('John'), shoplifter, countable, na, eq, 1).
 
 ANSWERTEXT #1:

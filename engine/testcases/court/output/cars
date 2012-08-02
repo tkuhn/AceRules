@@ -27,6 +27,7 @@ pred_mod(be, string('Toyota 2'), [modifier_pp(at, string('Zurich'))]).
 pred_mod(be, string('VW 1'), [modifier_pp(at, string('Geneva'))]).
 property(string('VW 1'), red, pos).
 property(string('BMW 2'), fast, comp_than, string('VW 1')).
+object(named('John-Miller'), 'John-Miller', named, na, eq, 1).
 object(string('BMW 1'), car, countable, na, eq, 1).
 object(string('BMW 2'), car, countable, na, eq, 1).
 object(string('Basel'), branch, countable, na, eq, 1).
@@ -69,6 +70,7 @@ pred_mod(be, string('Toyota 2'), [modifier_pp(at, string('Zurich'))]).
 pred_mod(be, string('VW 1'), [modifier_pp(at, string('Geneva'))]).
 property(string('VW 1'), red, pos).
 property(string('BMW 2'), fast, comp_than, string('VW 1')).
+object(named('John-Miller'), 'John-Miller', named, na, eq, 1).
 object(string('BMW 1'), car, countable, na, eq, 1).
 object(string('BMW 2'), car, countable, na, eq, 1).
 object(string('Basel'), branch, countable, na, eq, 1).

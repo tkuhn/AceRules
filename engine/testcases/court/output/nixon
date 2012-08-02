@@ -7,6 +7,7 @@ Nixon is a republican.
 Republican-Rule overrides Quaker-Rule.
 
 RULES:
+object(named('Nixon'), 'Nixon', named, na, eq, 1).
 object(named('Nixon'), quaker, countable, na, eq, 1).
 object(named('Nixon'), republican, countable, na, eq, 1).
 'Quaker-Rule':: group([object(A, pacifist, countable, na, eq, 1)]) <- [object(A, quaker, countable, na, eq, 1)].
@@ -22,6 +23,7 @@ overrides('Republican-Rule', 'Quaker-Rule').
 
 ANSWERSET #1:
 -group([object(named('Nixon'), pacifist, countable, na, eq, 1)]).
+object(named('Nixon'), 'Nixon', named, na, eq, 1).
 object(named('Nixon'), quaker, countable, na, eq, 1).
 object(named('Nixon'), republican, countable, na, eq, 1).
 

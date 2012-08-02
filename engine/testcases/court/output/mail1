@@ -18,11 +18,18 @@ pred_mod(be, named('Message110'), [modifier_pp(from, named('ParisCo'))]).
 pred_mod(be, named('Message116'), [modifier_pp(from, named('FaveCo'))]).
 pred_mod(be, named('Message211'), [modifier_pp(from, named('BabyCo'))]).
 pred_mod(await, named('Karen'), v(0), [modifier_pp(from, named('ParisCo'))]).
+object(named('BabyCo'), 'BabyCo', named, na, eq, 1).
 object(named('BabyCo'), retailer, countable, na, eq, 1).
+object(named('FaveCo'), 'FaveCo', named, na, eq, 1).
 object(named('FaveCo'), retailer, countable, na, eq, 1).
+object(named('Karen'), 'Karen', named, na, eq, 1).
+object(named('Message110'), 'Message110', named, na, eq, 1).
 object(named('Message110'), message, countable, na, eq, 1).
+object(named('Message116'), 'Message116', named, na, eq, 1).
 object(named('Message116'), message, countable, na, eq, 1).
+object(named('Message211'), 'Message211', named, na, eq, 1).
 object(named('Message211'), message, countable, na, eq, 1).
+object(named('ParisCo'), 'ParisCo', named, na, eq, 1).
 object(named('ParisCo'), retailer, countable, na, eq, 1).
 object(v(0), delivery, countable, na, eq, 1).
 'Delivery-Rule':: group([property(A, important, pos)]) <- [pred_mod(await, named('Karen'), B, [modifier_pp(from, C)]), pred_mod(be, A, [modifier_pp(from, C)]), object(C, D, E, F, G, H), object(A, message, countable, na, eq, 1), object(B, delivery, countable, na, eq, 1)].
@@ -57,11 +64,18 @@ pred_mod(be, named('Message110'), [modifier_pp(from, named('ParisCo'))]).
 pred_mod(be, named('Message116'), [modifier_pp(from, named('FaveCo'))]).
 pred_mod(be, named('Message211'), [modifier_pp(from, named('BabyCo'))]).
 pred_mod(await, named('Karen'), v(0), [modifier_pp(from, named('ParisCo'))]).
+object(named('BabyCo'), 'BabyCo', named, na, eq, 1).
 object(named('BabyCo'), retailer, countable, na, eq, 1).
+object(named('FaveCo'), 'FaveCo', named, na, eq, 1).
 object(named('FaveCo'), retailer, countable, na, eq, 1).
+object(named('Karen'), 'Karen', named, na, eq, 1).
+object(named('Message110'), 'Message110', named, na, eq, 1).
 object(named('Message110'), message, countable, na, eq, 1).
+object(named('Message116'), 'Message116', named, na, eq, 1).
 object(named('Message116'), message, countable, na, eq, 1).
+object(named('Message211'), 'Message211', named, na, eq, 1).
 object(named('Message211'), message, countable, na, eq, 1).
+object(named('ParisCo'), 'ParisCo', named, na, eq, 1).
 object(named('ParisCo'), retailer, countable, na, eq, 1).
 object(v(0), delivery, countable, na, eq, 1).
 

@@ -29,6 +29,8 @@ pred_mod(have, named('John'), v(1), []).
 pred_mod(make, named('Bill'), v(3), []).
 pred_mod(own, named('John'), v(0), []).
 pred_mod(want, named('Bill'), v(2), []).
+object(named('Bill'), 'Bill', named, na, eq, 1).
+object(named('John'), 'John', named, na, eq, 1).
 object(named('John'), clerk, countable, na, eq, 1).
 object(v(0), house, countable, na, eq, 1).
 object(v(1), car, countable, na, eq, 1).
@@ -80,6 +82,8 @@ pred_mod(have, named('John'), v(1), []).
 pred_mod(make, named('Bill'), v(3), []).
 pred_mod(own, named('John'), v(0), []).
 pred_mod(want, named('Bill'), v(2), []).
+object(named('Bill'), 'Bill', named, na, eq, 1).
+object(named('John'), 'John', named, na, eq, 1).
 object(named('John'), clerk, countable, na, eq, 1).
 object(v(0), house, countable, na, eq, 1).
 object(v(1), car, countable, na, eq, 1).

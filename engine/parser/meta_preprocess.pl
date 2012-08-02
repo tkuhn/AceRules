@@ -36,7 +36,7 @@ Processes the meta-structures of a rule definition, i.e. labels and overrides-st
 % Splits the input text (Codes) into a map of labels (LabelMap maps labels to sentence numbers),
 % a set of override-statements (Overrides), and the remaining text (PlainText).
 
-meta_preprocess(Codes, PlainText, LabelMap, Overrides) :-
+meta_preprocess(Codes, PlainText, [0-''|LabelMap], Overrides) :-
     clear_messages,
 	tokenize(Codes, Tokens), !,
 	(Tokens = [] ->

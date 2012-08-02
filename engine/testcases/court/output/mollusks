@@ -17,7 +17,10 @@ group([object(A, mollusk, countable, na, eq, 1)]) <- [group([object(A, cephalopo
 group([object(A, cephalopod, countable, na, eq, 1)]) <- [object(A, nautilus, countable, na, eq, 1)].
 group([object(named('Molly'), mollusk, countable, na, eq, 1)]).
 group([object(named('Sophie'), cephalopod, countable, na, eq, 1)]).
+object(named('Molly'), 'Molly', named, na, eq, 1).
+object(named('Natalie'), 'Natalie', named, na, eq, 1).
 object(named('Natalie'), nautilus, countable, na, eq, 1).
+object(named('Sophie'), 'Sophie', named, na, eq, 1).
 'Cephalopond-Rule':: -group([object(A, shellbearer, countable, na, eq, 1)]) <- [group([object(A, cephalopod, countable, na, eq, 1)])].
 'Mollusk-Rule':: group([object(A, shellbearer, countable, na, eq, 1)]) <- [group([object(A, mollusk, countable, na, eq, 1)])].
 'Nautilus-Rule':: group([object(A, shellbearer, countable, na, eq, 1)]) <- [object(A, nautilus, countable, na, eq, 1)].
@@ -47,7 +50,10 @@ group([object(named('Natalie'), mollusk, countable, na, eq, 1)]).
 group([object(named('Natalie'), shellbearer, countable, na, eq, 1)]).
 group([object(named('Sophie'), cephalopod, countable, na, eq, 1)]).
 group([object(named('Sophie'), mollusk, countable, na, eq, 1)]).
+object(named('Molly'), 'Molly', named, na, eq, 1).
+object(named('Natalie'), 'Natalie', named, na, eq, 1).
 object(named('Natalie'), nautilus, countable, na, eq, 1).
+object(named('Sophie'), 'Sophie', named, na, eq, 1).
 
 ANSWERTEXT #1:
 Natalie is a nautilus.

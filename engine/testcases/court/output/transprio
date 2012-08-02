@@ -7,6 +7,8 @@ R2: Bill waits.
 R3: John does not sleep.
 
 RULES:
+object(named('Bill'), 'Bill', named, na, eq, 1).
+object(named('John'), 'John', named, na, eq, 1).
 'R1':: group([pred_mod(sleep, named('John'), [])]).
 'R2':: pred_mod(wait, named('Bill'), []).
 'R3':: -group([pred_mod(sleep, named('John'), [])]).
@@ -25,6 +27,8 @@ overrides('R1', 'R3').
 ANSWERSET #1:
 group([pred_mod(sleep, named('John'), [])]).
 pred_mod(wait, named('Bill'), []).
+object(named('Bill'), 'Bill', named, na, eq, 1).
+object(named('John'), 'John', named, na, eq, 1).
 
 ANSWERTEXT #1:
 Bill waits.

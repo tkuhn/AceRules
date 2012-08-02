@@ -11,6 +11,9 @@ group([object(named('Mary'), clerk, countable, na, eq, 1)]) <- [pred_mod(be, A, 
 property(v(2), valid, pos).
 be_adj(v(0), valid, pos, [modifier_pp(for, v(1))]).
 pred_mod(be, string(abc), v(2), [modifier_pp(for, named('Bill'))]).
+object(named('Bill'), 'Bill', named, na, eq, 1).
+object(named('John'), 'John', named, na, eq, 1).
+object(named('Mary'), 'Mary', named, na, eq, 1).
 object(v(0), code, countable, na, eq, 1).
 object(v(1), card, countable, na, eq, 1).
 object(v(2), name, countable, na, eq, 1).
@@ -30,6 +33,9 @@ group([pred_mod(wait, named('John'), [])]).
 property(v(2), valid, pos).
 be_adj(v(0), valid, pos, [modifier_pp(for, v(1))]).
 pred_mod(be, string(abc), v(2), [modifier_pp(for, named('Bill'))]).
+object(named('Bill'), 'Bill', named, na, eq, 1).
+object(named('John'), 'John', named, na, eq, 1).
+object(named('Mary'), 'Mary', named, na, eq, 1).
 object(v(0), code, countable, na, eq, 1).
 object(v(1), card, countable, na, eq, 1).
 object(v(2), name, countable, na, eq, 1).

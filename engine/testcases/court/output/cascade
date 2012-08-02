@@ -17,6 +17,7 @@ group([object(A, employee, countable, na, eq, 1)]) <- [object(A, manager, counta
 group([object(A, worker, countable, na, eq, 1)]) <- [group([object(A, employee, countable, na, eq, 1)])].
 group([object(A, 'wage-earner', countable, na, eq, 1)]) <- [group([object(A, worker, countable, na, eq, 1)])].
 group([object(named('John'), customer, countable, na, eq, 1)]).
+object(named('John'), 'John', named, na, eq, 1).
 object(named('John'), manager, countable, na, eq, 1).
 
 SIMPLE RULES:
@@ -33,6 +34,7 @@ ANSWERSET #1:
 group([object(named('John'), employee, countable, na, eq, 1)]).
 group([object(named('John'), 'wage-earner', countable, na, eq, 1)]).
 group([object(named('John'), worker, countable, na, eq, 1)]).
+object(named('John'), 'John', named, na, eq, 1).
 object(named('John'), manager, countable, na, eq, 1).
 
 ANSWERTEXT #1:

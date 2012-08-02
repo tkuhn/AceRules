@@ -46,8 +46,9 @@ See condensation.txt for details.
 % Transfroms DRSIn and stores the result in DRSOut.
 
 condense_drs(drs(VarList, CondIn), drs([], CondOut)) :-
-	transform_deep(CondIn, CondTemp),
-	transform(CondTemp, VarList, CondOut).
+	transform_deep(CondIn, CondTemp1),
+	transform(CondTemp1, VarList, CondTemp2),
+	add_propername_conds(CondIn, CondTemp2, CondOut).
 
 
 %% transform_deep(+CondIn, -CondOut)
@@ -309,3 +310,35 @@ transform_mods([modifier_adv(_,Adv,D)-_|RestIn], [modifier_adv(Adv,D)|RestOut]) 
 
 transform_mods([modifier_pp(_,Prep,R2)-_|RestIn], [modifier_pp(Prep,R2)|RestOut]) :-
 	transform_mods(RestIn, RestOut).
+
+
+%% add_propername_conds(+Term, +CondsIn, -CondsOut)
+
+add_propername_conds(Var, Conds, Conds) :-
+	var(Var),
+	!.
+
+add_propername_conds(Atom, Conds, Conds) :-
+	atomic(Atom),
+	!.
+
+add_propername_conds(named(PN), Conds, Conds) :-
+	atom(PN),
+	member(object(named(PN),PN,named,na,eq,1)-0/0, Conds),
+	!.
+
+add_propername_conds(named(PN), Conds, [object(named(PN),PN,named,na,eq,1)-0/0|Conds]) :-
+	atom(PN),
+	!.
+
+add_propername_conds([], Conds, Conds) :-
+	!.
+
+add_propername_conds([First|Rest], CondsIn, CondsOut) :-
+	!,
+	add_propername_conds(First, CondsIn, CondsTemp),
+	add_propername_conds(Rest, CondsTemp, CondsOut).
+
+add_propername_conds(Term, CondsIn, CondsOut) :-
+	Term =.. TermList,
+	add_propername_conds(TermList, CondsIn, CondsOut).
