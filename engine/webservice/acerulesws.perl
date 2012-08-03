@@ -113,7 +113,7 @@ sub add_log_entry
 			$input . "\n\n" .
 			$output . "\n\n";
 
-	open(LOGFILE, ">> acerulesws.log") || print_error_and_exit("failed to open logfile");
+	open(LOGFILE, ">> logs/acerulesws.log") || print_error_and_exit("failed to open logfile");
 
 	print LOGFILE $log_entry;
 
