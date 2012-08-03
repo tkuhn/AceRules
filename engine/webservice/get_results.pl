@@ -255,6 +255,7 @@ get_acetrace(_, _, []).
 
 
 write_messages_log(Message) :-
-	open('messages.log', append, F),
+    make_directory_path(logs),
+	open('logs/messages.log', append, F),
 	format(F, '~w\n', Message),
 	close(F).
