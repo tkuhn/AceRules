@@ -27,7 +27,7 @@ import org.jdom.output.XMLOutputter;
 
 public class Request implements Runnable {
 	
-	private final static String WS_URL = "http://attempto.ifi.uzh.ch/perl/acerules/acerulesws.perl";
+	private final static String WS_URL = "http://attempto.ifi.uzh.ch/ws/acerules/acerulesws.perl";
 	
 	private final static Namespace ENV_NS = Namespace.getNamespace("env", "http://schemas.xmlsoap.org/soap/envelope/");
 	private final static Namespace AR_NS = Namespace.getNamespace("ar", "http://attempto.ifi.uzh.ch/acerules");
