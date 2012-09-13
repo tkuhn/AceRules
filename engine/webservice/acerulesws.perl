@@ -8,6 +8,7 @@ use Socket;
 use URI::Escape;
 
 my $port = 2763;
+my $logdir = "/var/log/attempto/ws/acerules";
 
 my $input = "";
 read(STDIN, $input, $ENV{'CONTENT_LENGTH'});
@@ -113,9 +114,9 @@ sub add_log_entry
 			$input . "\n\n" .
 			$output . "\n\n";
 
-	open(LOGFILE, ">> logs/acerulesws.log") || print_error_and_exit("failed to open logfile");
+	open(LOGFILE, ">> $logdir/acerulesws.log");
 
 	print LOGFILE $log_entry;
 
-	close LOGFILE || &print_error_and_exit("failed to close logfile");
+	close LOGFILE;
 }
