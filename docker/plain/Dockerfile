@@ -1,14 +1,9 @@
-FROM ubuntu:trusty
+FROM ubuntu:22.04
 WORKDIR /opt/application
 RUN apt-get -y update
 RUN apt-get install -y wget git ant
 RUN apt-get install -y swi-prolog swi-prolog-java
-RUN apt-get install -y openjdk-7-jdk
-RUN git clone --depth=1 https://github.com/Attempto/APE.git
-RUN mv APE ape
-WORKDIR /opt/application/ape
-RUN make install
-WORKDIR /opt/application
+RUN apt-get install -y openjdk-11-jdk
 RUN git clone --depth=1 https://github.com/tkuhn/AceRules.git
 WORKDIR /opt/application/AceRules/webapp
 RUN ant createwar

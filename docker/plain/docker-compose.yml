@@ -1,0 +1,7 @@
+version: '2'
+services:
+  acewiki:
+    image: tkuhn/acerules
+    restart: unless-stopped
+    ports:
+      - 9078:9078
