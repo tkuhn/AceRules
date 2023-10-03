@@ -1,8 +1,16 @@
 version: '2'
 services:
-  acewiki:
+  acerules:
     build: .
 #   image: tkuhn/acerules
     restart: unless-stopped
     ports:
       - 9078:9078
+    environment:
+      - WEBSERVICE_URL:http://acerules-webservice:80/cgi-bin/
+  acerules-webservice:
+    image: tkuhn/acerules-webservice
+    restart: unless-stopped
+    ports:
+      - 8080:80
+#     - 2763:2763

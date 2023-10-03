@@ -5,6 +5,7 @@ RUN apt-get install -y wget git ant
 RUN apt-get install -y openjdk-11-jdk
 RUN git clone --depth=1 https://github.com/tkuhn/AceRules.git
 WORKDIR /opt/application/AceRules/webapp
+RUN cat src/ch/uzh/ifi/attempto/acerules/Request.java | sed "s|http://attempto.ifi.uzh.ch/ws/acerules/|http://acerules-webservice/cgi-bin/|" > Request.java ; mv Request.java src/ch/uzh/ifi/attempto/acerules/Request.java
 RUN ant createwar
 RUN wget -O jetty-runner.jar https://repo1.maven.org/maven2/org/mortbay/jetty/jetty-runner/8.1.9.v20130131/jetty-runner-8.1.9.v20130131.jar
 EXPOSE 9078

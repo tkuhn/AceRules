@@ -30,6 +30,7 @@ RUN ln -s /opt/application/AceRules/engine/webservice/acerulesws.perl /usr/lib/c
 WORKDIR /opt/application/AceRules/engine/webservice
 RUN ./compile_webservice.sh
 EXPOSE 80
+EXPOSE 2763
 WORKDIR /opt/application/AceRules/engine/webservice/
 COPY start.sh .
 CMD ./start.sh

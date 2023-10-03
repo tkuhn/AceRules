@@ -2,5 +2,5 @@
 
 cd "$(dirname "$0")"
 
-./acerules-server.exe &
+nohup ./acerules-server.exe &
 apache2ctl -D FOREGROUND
