@@ -35,9 +35,8 @@ RUN make install
 RUN ln -s /opt/application/AceRules/engine/webservice/acerulesws.perl /usr/lib/cgi-bin/
 WORKDIR /opt/application/AceRules/engine/webservice
 RUN ./compile_webservice.sh
+RUN ln -s ../stable_interpreter .
 EXPOSE 80
 EXPOSE 2763
-WORKDIR /opt/application/AceRules/engine/webservice/
-RUN ln -s ../stable_interpreter .
 COPY start.sh .
 CMD ./start.sh
