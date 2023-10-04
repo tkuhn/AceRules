@@ -5,7 +5,7 @@ RUN apt-get -y upgrade
 RUN apt-get install -y wget git
 RUN apt-get install -y swi-prolog
 RUN apt-get install -y apache2
-RUN apt-get install -y libcgi-pm-perl
+RUN apt-get install -y libcgi-pm-perl liburi-perl
 #RUN apt-get install -y build-essential
 #RUN apt-get install -y gcc-4
 #RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4 4
@@ -43,5 +43,6 @@ RUN ./compile_webservice.sh
 EXPOSE 80
 EXPOSE 2763
 WORKDIR /opt/application/AceRules/engine/webservice/
+RUN ln -s ../stable_interpreter .
 COPY start.sh .
 CMD ./start.sh
