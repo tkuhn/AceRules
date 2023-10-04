@@ -10,6 +10,7 @@ services:
       - WEBSERVICE_URL:http://acerules-webservice:80/cgi-bin/
   acerules-webservice:
     image: tkuhn/acerules-webservice
+#   image: tkuhn/acerules-webservice:with-smodels
     restart: unless-stopped
     ports:
       - 8080:80

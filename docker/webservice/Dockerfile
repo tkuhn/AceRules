@@ -1,10 +1,11 @@
 FROM ubuntu:22.04
 WORKDIR /opt/application
 RUN apt-get -y update
+RUN apt-get -y upgrade
 RUN apt-get install -y wget git
 RUN apt-get install -y swi-prolog
 RUN apt-get install -y apache2
-RUN apt-get -y install libcgi-pm-perl
+RUN apt-get install -y libcgi-pm-perl
 RUN a2enmod cgi
 RUN service apache2 restart
 RUN git clone --depth=1 https://github.com/tkuhn/AceRules.git
