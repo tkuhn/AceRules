@@ -12,6 +12,8 @@ RUN git clone --depth=1 https://github.com/tkuhn/AceRules.git
 WORKDIR /opt/application/
 RUN git clone --depth=1 https://github.com/Attempto/APE.git
 RUN mv APE AceRules/ape
+RUN git clone --depth=1 https://github.com/Attempto/Clex.git
+RUN mv Clex/clex_lexicon.pl AceRules/ape/prolog/lexicon/
 WORKDIR /opt/application/AceRules/ape
 RUN make build
 #WORKDIR /opt/application
