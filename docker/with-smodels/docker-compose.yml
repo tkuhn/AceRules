@@ -2,7 +2,7 @@ version: '2'
 services:
   acerules-webservice:
     build: .
-#   image: tkuhn/acerules-webservice
+    image: tkuhn/acerules-webservice
     restart: unless-stopped
     ports:
 #     - 2763:2763

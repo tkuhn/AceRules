@@ -2,7 +2,7 @@ version: '2'
 services:
   acerules:
     build: .
-#   image: tkuhn/acerules
+    image: tkuhn/acerules
     restart: unless-stopped
     ports:
       - 9078:9078
